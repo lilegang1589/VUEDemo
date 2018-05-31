@@ -1,0 +1,37 @@
+@import "./util.scss";
+
+
+
+.__line {
+  border-bottom: $dataBorder;
+}
+
+
+
+
+.clearfix {
+    height:1%;
+}
+
+.content-item {
+  font-size:12px;
+  color: #475568;
+  margin-bottom: 8px;
+  p{
+    display: flex;
+    .content-item-label{
+      flex-shrink: 0;
+      font-size: 12px;
+      color: rgba(0,0,0,0.75);
+    }
+    .content-item-text{
+      font-size: 12px;
+      color: rgba(0,0,0,0.55);
+      width: 1px;
+      word-wrap: break-word;
+      flex: 1;
+    }
+  }
+
+}
+/**/

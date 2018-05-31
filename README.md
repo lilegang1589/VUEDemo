@@ -1,5 +1,5 @@
 # VUEDemo
-vue-router+vue+elementui+iconfont
+vue-router+vue+elementui+iconfont+echarts
 
 默认端口为8084,
 clone下来之后 进入VUEDemo\Vue-Project目录下执行以下几步

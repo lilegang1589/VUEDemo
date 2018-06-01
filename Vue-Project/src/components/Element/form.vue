@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import formdialog from './formdetaidialog'
+import formdialog from './formDetaiDialog'
 export default {
   data(){
     return{

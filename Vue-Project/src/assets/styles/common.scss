@@ -5,9 +5,36 @@
 .__line {
   border-bottom: $dataBorder;
 }
-
-
-
+.el-table th>.cell{
+  color: rgba(0,0,0,0.85);
+  font-weight: bold;
+}
+.el-table__header-wrapper .el-table__header thead tr th {
+  background-color:#fafafa;
+}
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+  background-color: #e6f7ff;
+}
+// 侧滑框样式
+.side-slip-dialog{
+  width: 400px;
+  min-height: 300px;
+  position: absolute;
+  top: 455px;
+  right: 24px;
+  z-index: 100;
+  background: $contentBackground;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  .side-slip-dialog-header {
+    line-height: 40px;
+    padding: 7px 24px;
+    border-bottom: $dataBorder;
+    .close-wrap {
+        text-align: right;
+    }
+  }  
+}
 
 .clearfix {
     height:1%;

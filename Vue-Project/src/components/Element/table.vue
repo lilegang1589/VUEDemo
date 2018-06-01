@@ -1,11 +1,13 @@
 <template>
   <div class="container" ref="container">
+    <div class="description">
+      具体功能请查看
+      <a href="http://element.eleme.io/#/zh-CN/component/installation" style="text-decoration:underline;color:blue;" target="_blank">ElementUI官网</a>
+    </div>
     <el-table
     :data="tableData"
-    border
     style="width: 100%">
     <el-table-column
-      fixed
       prop="date"
       label="日期"
       width="150">
@@ -36,7 +38,6 @@
       width="120">
     </el-table-column>
     <el-table-column
-      fixed="right"
       label="操作"
       width="100">
       <template slot-scope="scope">
@@ -45,13 +46,22 @@
       </template>
     </el-table-column>
   </el-table>
+  <detail :opts="dialog"></detail>
   </div>
 </template>
 
 <script>
+import detail from './tabledetail'
 export default {
+  components:{
+    detail
+  },
   data() {
       return {
+        dialog:{
+          visible:false,
+          form:{}
+        },
         tableData: [{
           date: '2016-05-03',
           name: '王小虎',
@@ -85,7 +95,8 @@ export default {
     },
     methods: {
       handleClick(row) {
-        console.log(row);
+        this.dialog.visible=true;
+        this.dialog.form=row;
       },
       setHeight() {
         let h = document.documentElement.clientHeight || document.body.offsetHeight;
@@ -103,5 +114,8 @@ export default {
   margin: 24px;
   padding: 24px;
   background: white;
+  .description{
+
+  }
 }
 </style>

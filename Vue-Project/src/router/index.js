@@ -5,6 +5,7 @@ import console from '@/components/console/console'
 import form from '@/components/Element/form'
 import table from '@/components/Element/table'
 import line from '@/components/Echarts/line'
+import theta from '@/components/Echarts/theta'
 import Login from '@/components/Login/login'
 Vue.use(Router)
 
@@ -41,6 +42,7 @@ export default new Router({
       //leaf: true,//只有一个节点
         children: [
             { path: '/line', component: line, name: '点图' },
+            { path: '/theta', component: theta, name: '极坐标图' },
         ]
     },
     {

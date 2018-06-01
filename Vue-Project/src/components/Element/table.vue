@@ -1,5 +1,5 @@
 <template>
-  <div class="container" ref="container">
+  <div class="__content" ref="container">
     <div class="description">
       具体功能请查看
       <a href="http://element.eleme.io/#/zh-CN/component/installation" style="text-decoration:underline;color:blue;" target="_blank">ElementUI官网</a>
@@ -110,12 +110,5 @@ export default {
 </script>
 
 <style lang="scss">
-.container{
-  margin: 24px;
-  padding: 24px;
-  background: white;
-  .description{
 
-  }
-}
 </style>

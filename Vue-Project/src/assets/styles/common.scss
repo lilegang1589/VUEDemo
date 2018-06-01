@@ -1,7 +1,11 @@
 @import "./util.scss";
 
 
-
+.__content{
+  padding: 20px;
+  margin: 20px;
+  background: white;
+}
 .__line {
   border-bottom: $dataBorder;
 }
@@ -33,7 +37,7 @@
     .close-wrap {
         text-align: right;
     }
-  }  
+  }
 }
 
 .clearfix {

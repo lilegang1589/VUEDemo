@@ -1,5 +1,5 @@
 <template>
-  <div class="container" ref="container">
+  <div class="__content" ref="container">
     本页为总览待开发
   </div>
 </template>
@@ -24,9 +24,5 @@ export default {
 </script>
 
 <style lang="css">
-.container{
-  margin: 24px;
-  padding: 24px;
-  background: white;
-}
+
 </style>

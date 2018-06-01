@@ -75,8 +75,10 @@ export default {
        }).then(() => {
          this.$router.push('/login');
        });
-    }
-  }
+    },
+
+  },
+
 }
 </script>
 

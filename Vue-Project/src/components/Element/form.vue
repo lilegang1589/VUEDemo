@@ -1,5 +1,5 @@
 <template>
-  <div class="fromcontent" ref="container">
+  <div class="__content fromcontent" ref="container">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" style="width: 50%;">
       <el-form-item label="活动名称" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
@@ -153,12 +153,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fromcontent{
-  padding: 20px;
-  margin: 20px;
-  background: white;
-
-}
 #checkboxclass{
   .el-checkbox-group{
     width: 100%;

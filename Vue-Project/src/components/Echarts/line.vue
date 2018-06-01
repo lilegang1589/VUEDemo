@@ -1,5 +1,5 @@
 <template >
-  <div class="content" ref="container">
+  <div class="__content" ref="container">
     <div id="chartPanel" ref="chartPanel" style="width:100%;height:300px;margin-top:100px;"></div>
  </div>
 </template>

@@ -19,8 +19,7 @@ export default {
           var theta = i / 100 * 360;
           var r = 5 * (1 + Math.sin(theta / 180 * Math.PI));
           this.data.push([r, theta]);
-      };
-      console.log("2222");
+      };      
       this.refreshCharts();
     },
     refreshCharts(){

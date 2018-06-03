@@ -6,6 +6,7 @@ import form from '@/components/Element/form'
 import table from '@/components/Element/table'
 import line from '@/components/Echarts/line'
 import theta from '@/components/Echarts/theta'
+import time from '@/components/Echarts/time'
 import Login from '@/components/Login/login'
 Vue.use(Router)
 
@@ -43,6 +44,8 @@ export default new Router({
         children: [
             { path: '/line', component: line, name: '点图' },
             { path: '/theta', component: theta, name: '极坐标图' },
+            { path: '/time', component: time, name: '速度图' },
+            
         ]
     },
     {

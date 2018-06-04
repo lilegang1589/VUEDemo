@@ -299,7 +299,8 @@ export default {
 
    },
    refreshData(){
-       this.sudu=[{value:(Math.random()*100).toFixed(2) - 0,name: 'km/h'}];        
+
+       this.sudu=[{value:(Math.random()*100).toFixed(1) - 0,name: 'km/h'}];        
         this.zhuansu = [{value:(Math.random()*7).toFixed(2) - 0,name:'x1000 r/min'}];
         this.gas= [{value:(Math.random()*2).toFixed(2) - 0,name:'gas'}];
         this.water= [{value:(Math.random()*2).toFixed(2) - 0,name:'water'}];
@@ -310,7 +311,11 @@ export default {
  },
  mounted(){
     this.refreshCharts();
-    setInterval(this.refreshData,2000);  
+    if(this.$route.path == "/time"){
+        setInterval(this.refreshData,2000);  
+        return;
+    }
+    
  }
 }
 </script>

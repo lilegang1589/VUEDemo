@@ -5,13 +5,18 @@
     <div class="slogan">
        欢迎使用 <br /> VUEDemo系统
     </div>
-    <el-form :model="loginForm" :rules="loginRules" ref="loginForm" label-position="top" label-width="0px" class="login-container">
+    <el-form :model="loginForm" :rules="loginRules" ref="loginForm"  class="login-container">
       <h3 class="title">VUE项目demo</h3>
-      <el-form-item prop="account" label="用户名">
-        <el-input type="text" @keyup.native.enter="handleSubmit" v-model="loginForm.account" auto-complete="off" placeholder="用户名为：admin"></el-input>
+      <el-form-item prop="account" >        
+        <el-input type="text" @keyup.native.enter="handleSubmit" v-model="loginForm.account" auto-complete="off" placeholder="用户名为：admin">
+          <template slot="prepend"><i class="icon iconfont icon-yonghu" /></template>
+          
+        </el-input>
       </el-form-item>
-      <el-form-item prop="checkPass" label="密码">
-        <el-input type="password" @keyup.native.enter="handleSubmit" v-model="loginForm.checkPass" auto-complete="off" placeholder="密码为：admin"></el-input>
+      <el-form-item prop="checkPass">
+        <el-input type="password" @keyup.native.enter="handleSubmit" v-model="loginForm.checkPass" auto-complete="off" placeholder="密码为：admin">
+          <template slot="prepend"><i class="icon iconfont icon-Password" /></template>
+        </el-input>
       </el-form-item>
       <!-- <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox> -->
       <el-form-item style="margin-bottom:10px;">

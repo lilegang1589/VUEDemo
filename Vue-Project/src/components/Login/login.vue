@@ -1,5 +1,10 @@
 <template>
-  <el-row class="container">
+  <div class="userLogin">  
+  <div class="container"></div>
+   <div class="content-wrapper">    
+    <div class="slogan">
+       欢迎使用 <br /> VUEDemo系统
+    </div>
     <el-form :model="loginForm" :rules="loginRules" ref="loginForm" label-position="top" label-width="0px" class="login-container">
       <h3 class="title">VUE项目demo</h3>
       <el-form-item prop="account" label="用户名">
@@ -18,7 +23,9 @@
 
       </el-row>
     </el-form>
-  </el-row>
+   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -109,18 +116,62 @@ mounted() {
         font-size: 12px;
     }
 }
+.userLogin{
+  position: relative;
+  height: 100vh;
+
 .container{
   min-height: 100%;
   background: url(../../assets/background.jpg);
   background-size: cover;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+  .content-wrapper {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .slogan {
+      text-align: center;
+      color: #f44336;
+      font-size: 36px;
+      letter-spacing: 2px;
+      line-height: 48px;
+    }
+  }  
+  @media screen and (max-width: 720px) {
+  
+    .content-wrapper {
+      margin: 20px auto;
+      top: 40px;
+      max-width: 300px;
+      display: block;
+      .slogan {
+        color: white;
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 10px;
+      }
+    }
+  
+}
   .login-container {
       background: #FFFFFF;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,0.35);
       border-radius: 4px;
       width: 310px;
       padding: 30px 20px 15px 20px;
-      margin: 120px auto;
+      
       box-sizing: border-box;
       .title {
         margin: 0px auto 40px auto;
@@ -152,5 +203,6 @@ mounted() {
           }
       }
     }
+
 }
 </style>

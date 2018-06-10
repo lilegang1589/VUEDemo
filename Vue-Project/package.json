@@ -11,10 +11,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
     "axios": "^0.15.3",
     "echarts": "^3.4.0",
+    "enquire": "0.0.2",
+    "enquire.js": "^2.1.6",
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1",
     "vuex": "^2.0.0-rc.6"
   },
   "devDependencies": {

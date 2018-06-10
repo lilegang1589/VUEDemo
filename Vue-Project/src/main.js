@@ -1,14 +1,16 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import "../static/iconfont/iconfont.css"
 import 'font-awesome/css/font-awesome.min.css'
 import './assets/styles/index.scss'//自定义属性一般最后加载保证能够生效
+import Vue from 'vue'
+import router from './router'
+import App from './App'
 import Vuex from 'vuex'
+import  enquire  from 'enquire.js';
 
 // import store from './vuex/store'
 

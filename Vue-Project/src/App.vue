@@ -11,7 +11,7 @@ export default {
 	},
 }
 </script>
-<style>
+<style lang="scss">
 body {
 		margin: 0px;
 		padding: 0px;
@@ -25,38 +25,38 @@ body {
   a{
   		text-decoration: none;
   		color: #fff;
-  	}
-  	li{
-  		list-style: none;
-  	}
-  	ul{
-  		padding: 0;
-  	}
-  	p{
-  		margin: 0;
-  	}
-  	#app {
-  		position: absolute;
-  		top: 0px;
-  		bottom: 0px;
-  		width: 100%;
-  	}
+	}
+	li{
+		list-style: none;
+	}
+	ul{
+		padding: 0;
+	}
+	p{
+		margin: 0;
+	}
+	#app {
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		width: 100%;
+	}
 
-  	.el-submenu [class^=fa] {
-  		vertical-align: baseline;
-  		margin-right: 10px;
-  	}
+	.el-submenu [class^=fa] {
+		vertical-align: baseline;
+		margin-right: 10px;
+	}
 
-  	.el-menu-item [class^=fa] {
-  		vertical-align: baseline;
-  		margin-right: 10px;
-  	}
+	.el-menu-item [class^=fa] {
+		vertical-align: baseline;
+		margin-right: 10px;
+	}
 
-  	.toolbar {
-  		background: #fff;
-  		padding: 20px;
-  		.el-form-item {
-  			margin-bottom: 10px;
-  		}
-  	}
+	.toolbar {
+		background: #fff;
+		padding: 20px;		
+		.el-form-item {
+			margin-bottom: 10px;
+		}
+	}
 </style>

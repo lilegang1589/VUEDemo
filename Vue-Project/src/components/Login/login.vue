@@ -42,7 +42,7 @@ export default {
         account: '',
         checkPass: ''
       },
-      remember:true,
+      remember:false,
       loginRules: {
         account: [
           { type:'string',required:true,message:'账号不能为空', trigger: 'blur' },
@@ -66,6 +66,8 @@ export default {
                     this.$router.replace('/console');
                     if(this.remember){
                       this.saveRememberData();
+                    }else{
+                      this.removeRememberData();
                     }
                   }else{
 

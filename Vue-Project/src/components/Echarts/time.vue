@@ -310,11 +310,18 @@ export default {
    
  },
  mounted(){
-    this.refreshCharts();
-    if(this.$route.path == "/time"){
-        setInterval(this.refreshData,2000);  
-        return;
+    this.$nextTick(function() {
+    let self = this;
+    window.onresize = function() {
+        self.chartPanel.resize();
+        self.setHeight();
     }
+  });
+    // this.refreshCharts();
+    // if(this.$route.path == "/time"){
+    //     setInterval(this.refreshData,2000);  
+    //     return;
+    // }
     
  }
 }

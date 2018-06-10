@@ -1,10 +1,13 @@
 <template>
       <div class="main" >
-        <aside class="leftMenu">
+        <aside class="leftMenu" ref="menu">
             <div class="logo" ref="logo">
                 <img  src="../assets/lgo.jpg" />
             </div>
-            <el-menu id="letNav" ref="letNav" :default-active="defaultActive" class="el-menu-vertical-demo"  unique-opened router  theme="dark">
+            <div @click="menuchange" style="width:210px;text-align:center;" ref="icon">
+                <i  :class="isCollapse?'el-icon-arrow-left':'el-icon-arrow-right'" style="color:white;font-size:22px;"></i>
+            </div>
+            <el-menu id="letNav" ref="letNav" :default-active="defaultActive" class="el-menu-vertical-demo"  unique-opened router  theme="dark" :collapse="isCollapse">
                 <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden ">
                     <el-submenu :index="index+''" :key="index" v-if="!item.leaf">
                         <template slot="title">
@@ -15,12 +18,9 @@
                             </span>
                         </template>
                         <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path" v-if="!child.hidden">
-
-                            <span>
-                                {{child.name}}
-
-                            </span>
+                             <span>{{child.name}}</span>
                         </el-menu-item>
+                        <!--  -->
                     </el-submenu>
                     <el-menu-item v-if="item.leaf&&item.children.length>0"  :key="index" :index="item.children[0].path">
                       <template slot="title">
@@ -31,9 +31,9 @@
                 </template>
             </el-menu>
         </aside>
-        <div class="content-container">
+        <div class="content-container" ref="container">
           <div class="navheard">
-            <span style="margin-left:20px;font-size:20px;">自主搭建vue Demo</span>
+            <span style="margin-left:20px;font-size:20px;">{{!isCollapse?"自主搭建":""}}vue Demo</span>
             <el-menu ref="headerNav" :default-active="defaultActive" id="headerNav" class="el-menu-header-wrap" mode="horizontal">
               <el-submenu index="/settings" >
                   <template slot="title">
@@ -52,19 +52,30 @@
 </template>
 
 <script>
+import  enquire  from 'enquire.js';
 export default {
   name: 'HelloWorld',
   components: {},
   data () {
     return {
       year: new Date().getFullYear(),
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      isCollapse: false
     }
   },
   computed:{
     defaultActive() {
             return "/"+this.$route.path.split("/")[1];
-        },
+    },
+    
+  },
+  mounted(){
+      this.$nextTick(function() {
+    let self = this;
+    window.onresize = function() {
+        self.enquireScreenRegister();
+    }
+  });
   },
   methods:{
     logout(){
@@ -76,6 +87,53 @@ export default {
          this.$router.push('/login');       
        });
     },
+    enquireScreenRegister() {
+        const isMobile = 'screen and (max-width: 720px)';
+        const isTablet = 'screen and (min-width: 721px)';
+        // const isDesktop = 'screen and (min-width: 1200px)';
+
+        enquire.register(isMobile, this.enquireScreenHandle('isMobile'));
+        enquire.register(isTablet, this.enquireScreenHandle('isTablet'));
+        // enquire.register(isDesktop, this.enquireScreenHandle('isDesktop'));
+    },
+    enquireScreenHandle(type) {
+   
+    if (type === 'isMobile') {
+        this.isCollapse=false;        
+      
+    }else if(type === 'isTablet'){
+        this.isCollapse=true;
+        
+      
+    }
+
+    const handler = {
+      match: () => {
+       this.menuchange();
+      },
+      unmatch: () => {
+       // this.menuchange();
+      },
+    };
+
+    return handler;
+  },
+    menuchange(){        
+        if(!this.isCollapse){
+            this.$refs.menu.style.width=60+'px';
+            this.$refs.logo.style.width=60+'px';
+            this.$refs.container.style.left=60+'px';
+            this.$refs.icon.style.width=60+'px';
+            this.isCollapse=true;
+
+        }else{
+            this.$refs.menu.style.width=210+'px';
+            this.$refs.logo.style.width=210+'px';
+            this.$refs.container.style.left=210+'px';
+            this.$refs.icon.style.width=210+'px';
+            this.isCollapse=false;
+        }
+    }
 
   },
 
@@ -107,11 +165,20 @@ $menuWidth: 210px;
             }
         }
         .el-menu-vertical-demo {
-            width: $menuWidth;
+            width: 60px;
             min-height: 400px;
             background: #001529;
         }
-
+        .el-menu-vertical-demo:not(.el-menu--collapse) {
+            width: 210px;
+            min-height: 400px;
+            background: #001529;
+        }
+        .icon{
+            
+            height: 60px;           
+           
+        }
         .logo {
             width: $menuWidth;
             height: 60px;
@@ -145,6 +212,7 @@ $menuWidth: 210px;
             }
         }
         .el-menu{
+                border-right:none;
             .el-submenu{
                 .el-submenu__title{
                     font-size: 14px;
@@ -238,7 +306,7 @@ $menuWidth: 210px;
       bottom: 0px;
       left: $menuWidth;
       overflow: auto;
-      min-width: 1060px;
+      //min-width: 1060px;
       transition: left 0.5s;
       .navheard{
         height: 60px;

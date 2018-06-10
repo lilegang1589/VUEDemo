@@ -67,6 +67,13 @@ export default {
 }
   },
   mounted(){
+    this.$nextTick(function() {
+    let self = this;
+    window.onresize = function() {
+        self.chartPanel.resize();
+        self.setHeight();
+    }
+  });
     this.getData();
     this.setHeight();
     console.log(this.checktime(5));

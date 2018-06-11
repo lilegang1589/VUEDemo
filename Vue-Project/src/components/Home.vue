@@ -1,10 +1,10 @@
 <template>
       <div class="main" >
-        <aside class="leftMenu" ref="menu">
-            <div class="logo" ref="logo">
+        <aside class="leftMenu" ref="menu"  :style="widthformat"  >
+            <div class="logo" >
                 <img  src="../assets/lgo.jpg" />
             </div>
-            <div @click="menuchange" style="width:210px;text-align:center;" ref="icon">
+            <div @click="isCollapse=!isCollapse" style="text-align:center;" >
                 <i  :class="isCollapse?'el-icon-arrow-left':'el-icon-arrow-right'" style="color:white;font-size:22px;"></i>
             </div>
             <el-menu id="letNav" ref="letNav" :default-active="defaultActive" class="el-menu-vertical-demo"  unique-opened router  theme="dark" :collapse="isCollapse">
@@ -31,7 +31,7 @@
                 </template>
             </el-menu>
         </aside>
-        <div class="content-container" ref="container">
+        <div class="content-container" ref="container" :style="leftformat">
           <div class="navheard">
             <span style="margin-left:20px;font-size:20px;">{{!isCollapse?"自主搭建":""}}vue Demo</span>
             <el-menu ref="headerNav" :default-active="defaultActive" id="headerNav" class="el-menu-header-wrap" mode="horizontal">
@@ -60,21 +60,40 @@ export default {
     return {
       year: new Date().getFullYear(),
       msg: 'Welcome to Your Vue.js App',
-      isCollapse: false
+      isCollapse: false,
+      show:true,
     }
   },
   computed:{
     defaultActive() {
             return "/"+this.$route.path.split("/")[1];
     },
+    widthformat(){
+        if(!this.isCollapse){
+            return 'width:210px';            
+        }else{          
+            return 'width:60px';            
+        };
+    },
+    leftformat(){
+        if(!this.isCollapse){
+            return 'left:210px';            
+        }else{          
+            return 'left:60px';            
+        };
+    },
+
     
   },
   mounted(){
       this.$nextTick(function() {
-    let self = this;
-    window.onresize = function() {
-        self.enquireScreenRegister();
-    }
+        let self = this;
+        
+        window.onresize = function() {
+            //this.show=false;
+            self.enquireScreenRegister();
+            //this.show=true;
+        }
   });
   },
   methods:{
@@ -88,54 +107,34 @@ export default {
        });
     },
     enquireScreenRegister() {
-        const isMobile = 'screen and (max-width: 720px)';
-        const isTablet = 'screen and (min-width: 721px)';
+        const isMobile = 'screen and (max-width: 767px)';
+        const isTablet = 'screen and (min-width: 768px) and (max-width: 991px)';
+        const isDesktop = 'screen and (min-width: 992px)';       
         // const isDesktop = 'screen and (min-width: 1200px)';
 
         enquire.register(isMobile, this.enquireScreenHandle('isMobile'));
         enquire.register(isTablet, this.enquireScreenHandle('isTablet'));
-        // enquire.register(isDesktop, this.enquireScreenHandle('isDesktop'));
+        enquire.register(isDesktop, this.enquireScreenHandle('isDesktop'));
     },
     enquireScreenHandle(type) {
-   
-    if (type === 'isMobile') {
-        this.isCollapse=false;        
-      
-    }else if(type === 'isTablet'){
-        this.isCollapse=true;
-        
-      
-    }
-
     const handler = {
       match: () => {
-       this.menuchange();
+       if (type === 'isMobile') {
+            this.isCollapse=true; 
+        }else if(type === 'isTablet' ||type==='isDesktop'){
+            this.isCollapse=false;
+            
+        
+        }
       },
       unmatch: () => {
-       // this.menuchange();
+     
       },
     };
 
     return handler;
   },
-    menuchange(){        
-        if(!this.isCollapse){
-            this.$refs.menu.style.width=60+'px';
-            this.$refs.logo.style.width=60+'px';
-            this.$refs.container.style.left=60+'px';
-            this.$refs.icon.style.width=60+'px';
-            this.isCollapse=true;
-
-        }else{
-            this.$refs.menu.style.width=210+'px';
-            this.$refs.logo.style.width=210+'px';
-            this.$refs.container.style.left=210+'px';
-            this.$refs.icon.style.width=210+'px';
-            this.isCollapse=false;
-        }
-    }
-
-  },
+}
 
 }
 </script>
@@ -179,8 +178,22 @@ $menuWidth: 210px;
             height: 60px;           
            
         }
-        .logo {
-            width: $menuWidth;
+        .logo{
+            
+             height: 60px;
+            font-size: 22px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #00284d;
+            text-align: center;
+            background: #00284d;
+            img {
+                width: 45px;
+                margin: 0;
+                margin-top: 12px;
+            }
+        }
+        .logo1 {
+            width: 60px;
             height: 60px;
             font-size: 22px;
             box-sizing: border-box;

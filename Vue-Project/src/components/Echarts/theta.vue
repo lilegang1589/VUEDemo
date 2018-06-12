@@ -28,9 +28,9 @@ export default {
       }
       this.chartPanel = echarts.init(this.$refs['chartPanel']);
       this.chartPanel.setOption({
-        title: {
-           text: '极坐标双数值轴'
-       },
+      //   title: {
+      //      text: '极坐标双数值轴'
+      //  },
        legend: {
            data: ['line']
        },

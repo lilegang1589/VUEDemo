@@ -44,7 +44,7 @@ export default new Router({
         children: [
             { path: '/line', component: line, name: '点图' },
             { path: '/theta', component: theta, name: '极坐标图' },
-            { path: '/time', component: time, name: '速度图' },
+            { path: '/time', component: time, name: '速度图',hidden:true },
             
         ]
     },

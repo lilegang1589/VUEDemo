@@ -150,13 +150,13 @@ mounted() {
     align-items: center;
     .slogan {
       text-align: center;
-      color: #f44336;
+      color: #FFEB3B;
       font-size: 36px;
       letter-spacing: 2px;
       line-height: 48px;
     }
   }  
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 767px) {
   
     .content-wrapper {
       margin: 20px auto;

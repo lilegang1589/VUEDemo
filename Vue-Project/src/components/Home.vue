@@ -184,41 +184,40 @@ $menuWidth: 210px;
                 margin-top: 12px;
             }
         }        
-        .el-menu{
-            
+        .el-menu {            
             border-right:none;
-            .el-submenu{
-                .el-submenu__title{
+            .el-submenu {
+                .el-submenu__title {
                     font-size: 14px;
                     height: 40px;
                     line-height: 40px;
                     color: white;
                     opacity: 0.65;                   
-                    span{
+                    span {
                         margin-left: 13px;
                     }
-                    &:hover{
+                    &:hover {
                         background-color: #121c2f;
                         opacity: 1;
                     }                             
                 }
-                .el-menu-item{
+                .el-menu-item {
                     height: 40px;
                     line-height: 40px;
                     font-size: 14px;
                     color: white;
                     background: #001529;
                     padding-left: 48px !important;
-                    span{
+                    span {
                         opacity: 0.64;
                     }
-                    &:hover{
+                    &:hover {
                         background:#48576a;
-                        span{
+                        span {
                             opacity: 1;
                         }
                     }
-                    &.is-active{
+                    &.is-active {
                         background: #1890FF;
                         
                         span{
@@ -232,30 +231,29 @@ $menuWidth: 210px;
             width: 60px;
             min-height: 100%;
             background: #001529;
-            .el-submenu{
-                .el-submenu__title{
-                    i.iconfont{                        
-                        font-size: 16px;
+            .el-submenu {
+                .el-submenu__title {                    
+                    i.iconfont {                        
+                        font-size: 18px;
+                        color: white;
                     }
                 }
-            }    
-            
-                            
+            }                            
         }
         .el-menu-vertical-demo:not(.el-menu--collapse) {
             width: 210px;
             min-height: 400px;
             background: #001529;
-           .el-submenu{
-                .el-submenu__title{
-                    i.iconfont{                        
-                        font-size: 14px;
+           .el-submenu {
+                .el-submenu__title {
+                    i.iconfont {                        
+                        font-size: 16px;
                     }
                 }
             }    
         }        
     }
-    .content-container{
+    .content-container {
       background: #f0f2f5;
       position: absolute;
       top: 0px;
@@ -273,7 +271,7 @@ $menuWidth: 210px;
         display: flex;
         justify-content: space-between;
         z-index: 11;
-        .userinfo-inner{
+        .userinfo-inner {
           color: rgba(0,0,0,0.85);
           cursor: pointer;
           img {
@@ -284,15 +282,15 @@ $menuWidth: 210px;
               float: right;
 
           }
-        }
-        .el-menu--horizontal>.el-submenu .el-submenu__icon-arrow{
+        }        
+        .el-menu--horizontal>.el-submenu .el-submenu__icon-arrow {
             font-family:"iconfont" !important;
             font-size:12px;
             font-style:normal;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             position:absolute;
-            &:before{
+            &:before {
                 content: "\e63d";
             }
         }
@@ -307,125 +305,96 @@ $menuWidth: 210px;
         text-decoration: none;
       }
     }
-  }
-  .main .leftMenu{
-        .el-icon-arrow-down{
-            font-family:"iconfont" !important;
-            font-size:12px;
-            font-style:normal;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            &:before{
-                content: "\e63d";
-            }
-        }
-
-    }
-#letNav{
-  .el-submenu__title i{
-      color: white;
-
-  }
-  .el-menu-item.is-active{
-      color: white;
-      background: #1890FF;
-      .iconfont{
-          color: white;
-          padding-right: 13px;
-      }
-      span{
-          opacity: 1;
-      }
-  }
-  .el-menu-item.hover{
-      color: white;
-      background:#48576a;
-      .iconfont{
-          color: white;
-          padding-right: 13px;
-      }
-      span{
-          opacity: 1;
-      }
-  }
 }
-.el-menu--collapse .el-menu .el-submenu, .el-menu--popup{
+.main .leftMenu{
+    .el-icon-arrow-down{
+        font-family:"iconfont" !important;
+        font-size:14px;
+        font-style:normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        &:before{
+            content: "\e63d";
+        }
+    }
+}
+.el-menu--collapse .el-menu .el-submenu, .el-menu--popup {
     min-width: 120px;
 }
-.el-menu--popup{
-    padding: 0;
-    background-color: #15a8ea;
+.el-menu--vertical {    
+    .el-menu--popup {
+        padding: 0;
+        background-color: #000C17;
+    }
+    .el-menu-item {
+        color: white;
+        opacity: 0.65;
+        &:hover ,&:focus{
+            opacity: 1;
+            background-color: #48576a;
+        }
+        &.is-active {
+            opacity: 1;
+            background-color: #1890FF;
+        }
+    }    
 }
-  @media screen and (max-width: 767px) {
-       
-            aside.leftMenu{
-                position: fixed;
-                left: -240px;
-                //transform: translateX(0);
-                transition: all 0.5s;
-                width: 210px;
-                min-height:100%;
-                background: #001529;
-            }
-            .el-message-box{
-                width: 260px;
-            }
-         .menu-model{
-                position: fixed;
-                top: 0px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: #000;
-                opacity: 0.3;
-                z-index: 99;    
-            
-        }
-        aside.open-drawer {
-                &.leftMenu {
-                    position: fixed;
-                    left: 0;
-                    //transform: translateX(0);
-                    transition: all 0.5s;
-                    z-index: 9999;
-                }
-        }
-        .menu-btn {//监测界面为手机模式界面菜单栏按钮样式
+
+
+@media screen and (max-width: 767px) {       
+    aside.leftMenu {
+        position: fixed;
+        left: -240px;
+        //transform: translateX(0);
+        transition: all 0.5s;
+        width: 210px;
+        min-height:100%;
+        background: #001529;
+    }
+    .el-message-box {
+        width: 260px;
+    }
+    .menu-model {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000;
+        opacity: 0.3;
+        z-index: 99;    
+    }
+    aside.open-drawer {
+        &.leftMenu {
             position: fixed;
             left: 0;
-            top: 44px;
-            width: 40px;
-            height: 40px;
-            border-radius: 0 6px 6px 0;
-            margin-bottom: 0;
-            line-height: 40px;
-            text-align: center;
-            cursor: pointer;
-            color:white;
-            background: #3080FE;
-            z-index: 999;
-            text-decoration: none;
-            &:hover {
-                color: #e7e7e7;
-            }
+            //transform: translateX(0);
+            transition: all 0.5s;
+            z-index: 9999;
         }
-        
-        
-       
-       
-
-      .el-menu--horizontal>.el-submenu .el-submenu__icon-arrow{
-            // font-family:"iconfont" !important;
-            // font-size:12px;
-            // font-style:normal;
-            // -webkit-font-smoothing: antialiased;
-            // -moz-osx-font-smoothing: grayscale;
-            // position:absolute;
-            // &:before{
-            //     content: "\e63d";
-            // }
-            right:5px;
+    }
+    .menu-btn {//监测界面为手机模式界面菜单栏按钮样式
+        position: fixed;
+        left: 0;
+        top: 44px;
+        width: 40px;
+        height: 40px;
+        border-radius: 0 6px 6px 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+        color:white;
+        background: #3080FE;
+        z-index: 999;
+        text-decoration: none;
+        &:hover {
+            color: #e7e7e7;
         }
+    }
+    .el-menu--horizontal>.el-submenu .el-submenu__icon-arrow {            
+        right:5px;
+    }
   }
 
 </style>

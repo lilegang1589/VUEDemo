@@ -49,11 +49,28 @@
           </div>
         </div>
         <div :class="!opendrg?'menu-model':''" @click="opendrg=!opendrg"></div>
+        <el-dialog
+          title="注意！"
+          :visible.sync="timeoutVisable"    
+          :close-on-press-escape="false"
+          :close-on-click-modal="false"
+          :show-close="false"
+          width='30%'
+          >
+          <span>由于您长时间没有操作，请重新登录。</span>
+          <span slot="footer" class="dialog-footer">
+            <!-- <el-button type="primary" @click="continueOperate">{{ $t('home.continue') }}</el-button> -->
+            <el-button type="primary" @click="$router.push('/login')">确定</el-button>
+          </span>
+        </el-dialog>
       </div>
+      
 </template>
 
 <script>
 import  enquire  from 'enquire.js';
+import { mapActions, mapGetters } from 'vuex'
+import store from '../vuex/store'
 export default {
   name: 'HelloWorld',
   components: {},
@@ -64,11 +81,25 @@ export default {
         isCollapse: false,
         screen:"",
         opendrg:true,
+        timeoutVisable:false
     }
-  },                                            
+  }, 
+   watch: {
+    getInactiveTime(newValue, oldValue) {             
+        let that = this;    
+        if(newValue == 60) {
+           that.timeoutVisable=true;
+        } else if(newValue == 0) {
+            that.$router.push('/login');
+        }
+    }    
+  },                                             
   computed:{
+    ...mapGetters([
+        'getInactiveTime', 'getInactiveTimer'
+    ]),    
     defaultActive() {
-        return "/"+this.$route.path.split("/")[1];
+        return "/"+this.$route.path.split("/")[1];       
     },
     widthformat(){
         if(this.screen){
@@ -93,8 +124,9 @@ export default {
             }; 
         }
     },    
-  },  
-  methods:{
+  },
+ 
+  methods:{     
     logout(){
         this.$confirm("确定退出登录？", {
             confirmButtonText: "确定",
@@ -147,8 +179,12 @@ export default {
       this.$nextTick(function() {
           let self = this;      
           self.enquireScreenRegister();        
-      });
+      });     
   },
+  destroyed() {
+    window.clearInterval(this.getInactiveTimer);
+  },
+  store
 }
 </script>
 <style lang="scss" >

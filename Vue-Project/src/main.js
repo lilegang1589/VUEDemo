@@ -10,9 +10,8 @@ import Vue from 'vue'
 import router from './router'
 import App from './App'
 import Vuex from 'vuex'
-import  enquire  from 'enquire.js';
-
-// import store from './vuex/store'
+import enquire  from 'enquire.js'
+import store from './vuex/store'
 
 Vue.use(ElementUI)
 Vue.use(Vuex)
@@ -27,15 +26,15 @@ if (outerPaths.includes(to.path) || (to.name && outerPaths.includes(to.name))) {
   next();
 } else if (!user) {
   next({ path: '/login' });
-} else  {
+} else  {  
   next();
 }
 });
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

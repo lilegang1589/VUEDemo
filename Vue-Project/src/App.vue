@@ -1,15 +1,31 @@
 <template>
-  <div id="app">
+  <div id="app" @mouseup="mouseup" >
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import store from './vuex/store'
 export default {
   name: 'App',
+  data(){
+      return{
+          date:"",
+          timer:1000
+      }
+  },
   components: {
-	},
+    },
+  methods:{
+      mouseup(e){         
+          store.dispatch("resetInactiveTime");//鼠标动作启用此函数，开始计时，超过20分钟退出系统界面生效               
+      }
+        
+     
+        
+  }
 }
+
 </script>
 <style lang="scss">
 body {

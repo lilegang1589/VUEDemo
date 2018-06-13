@@ -1,6 +1,6 @@
 <template>
   <div class="__content fromcontent" ref="container">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" style="width: 50%;">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="活动名称" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
@@ -16,7 +16,7 @@
             <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;" :picker-options="pickerOptions1"></el-date-picker>
           </el-form-item>
         </el-col>
-        <el-col class="line" :span="2">-</el-col>
+        <el-col class="line"  style="text-align:center;" :span="2">-</el-col>
         <el-col :span="11">
           <el-form-item prop="date2">
             <el-time-picker type="fixed-time" placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>

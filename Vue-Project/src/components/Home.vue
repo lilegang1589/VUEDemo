@@ -4,7 +4,7 @@
             <div class="logo" >
                 <img  src="../assets/lgo.jpg" />
             </div>
-            <div @click="isCollapse=!isCollapse" style="text-align:center;" v-if="!screen">
+            <div @click="isCollapse=!isCollapse" style="text-align:center;" v-if="screen!='isMobile'">
                 <i  :class="isCollapse?'el-icon-arrow-left':'el-icon-arrow-right'" style="color:white;font-size:22px;"></i>
             </div>
             <el-menu id="letNav" ref="letNav" :default-active="defaultActive" class="el-menu-vertical-demo"  unique-opened router @select="select" theme="dark" :collapse="isCollapse">
@@ -28,22 +28,22 @@
                 </template>
             </el-menu>
         </aside>
-        <div class="menu-btn" v-if="screen"  @click="opendrg=!opendrg">
+        <div class="menu-btn" v-if="screen==='isMobile'"  @click="opendrg=!opendrg">
              <i class="icon iconfont icon-zhankai"/>
         </div>
         <div class="content-container" ref="container" :style="leftformat">
           <div class="navheard">
-            <span style="margin-left:20px;font-size:20px;">{{!screen?"自主搭建vue":""}} Demo</span>
+            <span style="margin-left:20px;font-size:20px;">{{(screen!='isMobile')?"自主搭建vue":""}} Demo</span>
             <el-menu ref="headerNav" :default-active="defaultActive" id="headerNav" class="el-menu-header-wrap" mode="horizontal">
               <el-submenu index="/settings" >
                   <template slot="title">
-                        <span class="userinfo-inner"><span style="float: right;padding:0 20px 0 5px;" v-if="!screen">测试员</span> <img src="../assets/logo2.jpg" /></span>
+                        <span class="userinfo-inner"><span style="float: right;padding:0 20px 0 5px;" v-if="screen!='isMobile'">测试员</span> <img src="../assets/logo2.jpg" /></span>
                   </template>
                   <el-menu-item @click.native="logout" style="color:rgba(0,0,0,0.75)" index="logout">退出登录</el-menu-item>
               </el-submenu>
             </el-menu>
           </div>
-          <router-view></router-view>
+          <router-view :isMobile="screen" :isCollapse="isCollapse"></router-view>
           <div class="footer">
               Copyright © {{year}} ****.All Rights Reserved.  **** 版权所有 · ****
           </div>
@@ -102,7 +102,7 @@ export default {
         return "/"+this.$route.path.split("/")[1];       
     },
     widthformat(){
-        if(this.screen){
+        if(this.screen==='isMobile'){
             return;
         }else{
            if(!this.isCollapse){
@@ -114,7 +114,7 @@ export default {
         
     },
     leftformat(){
-        if(this.screen){
+        if(this.screen==='isMobile'){
             return 'left:0';
         }else{
            if(!this.isCollapse){
@@ -139,7 +139,7 @@ export default {
         });
     },
     select(val){
-        if(this.screen&&val){
+        if(this.screen==='isMobile'&&val){
             this.opendrg=!this.opendrg;
         }   
     },
@@ -163,10 +163,10 @@ export default {
                     }
                 }else if(type === 'isTablet' ){
                     this.isCollapse=true;
-                    this.screen="";        
+                    this.screen="isTablet";        
                 }else{
                     this.isCollapse=false;
-                    this.screen=""; 
+                    this.screen="isDesktop"; 
                 }
             },
             unmatch: () => {     

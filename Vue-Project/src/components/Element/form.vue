@@ -1,6 +1,6 @@
 <template>
   <div class="__content fromcontent" ref="container">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" :style="widthformat" :label-position="isMobile==='isMobile'?'top':'left'" class="demo-ruleForm">
       <el-form-item label="活动名称" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
@@ -56,6 +56,9 @@
 <script>
 import formdialog from './formDetaiDialog'
 export default {
+  props:{
+      isMobile:""      
+  },
   data(){
     return{
       ruleForm: {
@@ -146,7 +149,17 @@ export default {
   components: {
     formdialog
   },
-  mouted(){
+  computed:{
+       widthformat(){
+        if(this.isMobile==='isDesktop'){
+           return 'width:50%';
+        }else{
+           return 'width:100%';
+        }
+        
+    },
+  },
+  mounted(){
     this.setHeight();
   }
 }

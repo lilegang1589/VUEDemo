@@ -1,33 +1,22 @@
 <template >
   <div class="__content" ref="container">
-    <div id="chartPanel" ref="chartPanel" style="width:100%;height:300px;margin-top:100px;"></div>
+    <div id="chartPanel" ref="chartPanel" style="width:100%;height:300px;margin-top:100px;"></div> 
+            
  </div>
 </template>
 
 <script>
 import echarts from "echarts";
 export default {
+  props:{
+      isMobile:"",
+      isCollapse:false     
+  },
   data() {
 
       return {
-        chartPanel:null,
-        // tableData: [{
-        //   date: '2016-05-02',
-        //   name: '王小虎',
-        //   address: '上海市普陀区金沙江路 1518 弄'
-        // }, {
-        //   date: '2016-05-04',
-        //   name: '王小虎',
-        //   address: '上海市普陀区金沙江路 1517 弄'
-        // }, {
-        //   date: '2016-05-01',
-        //   name: '王小虎',
-        //   address: '上海市普陀区金沙江路 1519 弄'
-        // }, {
-        //   date: '2016-05-03',
-        //   name: '王小虎',
-        //   address: '上海市普陀区金沙江路 1516 弄'
-        // }],
+        chartPanel:null, 
+        option:{},      
         data:[{'sumDate':'2016-05-03','Count1':11,'Count2':22,'Count3':33,'Count4':11},
               {'sumDate':'2016-05-04','Count1':41,'Count2':32,'Count3':13,'Count4':12},
               {'sumDate':'2016-05-05','Count1':2,'Count2':52,'Count3':66,'Count4':44},
@@ -39,6 +28,17 @@ export default {
               {'sumDate':'2016-05-11','Count1':44,'Count2':14,'Count3':83,'Count4':51},
               {'sumDate':'2016-05-12','Count1':17,'Count2':26,'Count3':32,'Count4':151},
       ]
+      }
+    },
+    watch: {
+      'isCollapse': function(val, oldVal) {       
+        setTimeout(() => {
+            this.chartPanel.resize();
+        }, 600);
+
+      },
+      isMobile(val,oldVal){
+          console.log((!!this.isMobile));
       }
     },
     methods:{
@@ -71,9 +71,10 @@ export default {
         this.chartPanel.dispose();
       }
       this.chartPanel = echarts.init(this.$refs['chartPanel']);
-      this.chartPanel.setOption({
-        title: {
-          text: "echarts图表演示",
+      
+      this.option={
+       title: {         
+          //text:"echarts图表演示",
           textStyle: {
             fontSize: 24,
             color: "#1F2D3D",
@@ -81,8 +82,7 @@ export default {
             align:"left",
             verticalAlign:"middle",
             lineHeight: 56
-          },
-          padding: [5, 0, 0, 24],
+          },         
 
         },
         tooltip: {
@@ -109,7 +109,7 @@ export default {
             );
             return labels.join("<br/>");
           },
-          padding: [8, 16]
+         
         },
         legend: {
            data:['Count1','Count2','Count3','Count4'],
@@ -121,9 +121,9 @@ export default {
             }
         },
         grid: {
-          top:"50px",
-          left: "32px",
-          right: "32px",
+          top:"15%",
+          left: "5%",
+          right: "5%",
           bottom: "0.06%",
           containLabel: true
         },
@@ -247,17 +247,25 @@ export default {
           }
 
         ]
-      });
+      };
+      this.chartPanel.setOption(this.option,true);
     },
   },
   mounted(){
+
   this.$nextTick(function() {
     let self = this;
-    window.onresize = function() {
-        self.chartPanel.resize();
+    
+    window.onresize = function() {        
+        setTimeout(() => {
+           self.chartPanel.resize();
+        }, 600);             
+        
         self.setHeight();
     }
-  });
+        
+    
+  });  
   this.refreshCharts();
   this.setHeight();
 

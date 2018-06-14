@@ -1,6 +1,6 @@
 <template>
       <div class="main" >
-        <aside class="leftMenu" ref="menu" :class="opendrg?'':'open-drawer'" :style="widthformat"  >
+        <aside class="leftMenu" ref="menu" :class="opendrg?'':'open-drawer'" :style="widthformat">
             <div class="logo" >
                 <img  src="../assets/lgo.jpg" />
             </div>
@@ -252,7 +252,7 @@ $menuWidth: 210px;
                     font-size: 14px;
                     color: white;
                     background: #001529;
-                    padding-left: 48px !important;
+                    padding-left: 64px !important;
                     span {
                         opacity: 0.64;
                     }

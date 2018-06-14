@@ -31,7 +31,7 @@
         <div class="menu-btn" v-if="screen==='isMobile'"  @click="opendrg=!opendrg">
              <i class="icon iconfont icon-zhankai"/>
         </div>
-        <div class="content-container" ref="container" :style="leftformat">
+        <div class="content-container" :class="!isCollapse?'':'contentleft'" ref="container">
           <div class="navheard">
             <span class="title">{{(screen!='isMobile')?"自主搭建vue":""}} Demo</span>
             <el-menu ref="headerNav" :default-active="defaultActive" id="headerNav" class="el-menu-header-wrap" mode="horizontal">
@@ -102,27 +102,27 @@ export default {
         return "/"+this.$route.path.split("/")[1];       
     },
     widthformat(){
-        if(this.screen==='isMobile'){
-            return;
-        }else{
+        // if(this.screen==='isMobile'){
+        //     return;
+        // }else{
            if(!this.isCollapse){
                 return 'width:210px';            
-            }else{          
+            }else if(this.isCollapse){          
                 return 'width:60px';            
             }; 
-        }
+        // }
         
     },
     leftformat(){
-        if(this.screen==='isMobile'){
-            return 'left:0';
-        }else{
+        // if(this.screen==='isMobile'){
+        //     return 'left:0';
+        // }else{
            if(!this.isCollapse){
                 return 'left:210px';            
-            }else{          
+            }else if(this.isCollapse){          
                 return 'left:60px';            
             }; 
-        }
+        // }
     },    
   },
  
@@ -197,7 +197,8 @@ $menuWidth: 210px;
     overflow-y: hidden;
     overflow-x: auto;
     position: absolute;      
-    aside.leftMenu {        
+    aside.leftMenu {
+        width: 210px;        
         .el-menu--dark{
             background: #001529;
             .el-submenu{
@@ -310,6 +311,9 @@ $menuWidth: 210px;
             }    
         }        
     }
+    .contentleft {
+          left:60px !important;
+    }
     .content-container {
       background: #f0f2f5;
       position: absolute;
@@ -362,6 +366,7 @@ $menuWidth: 210px;
             }
         }
       }
+      
       .footer {
         position: relative;
         margin-top: 20px;
@@ -408,7 +413,8 @@ $menuWidth: 210px;
 }
 
 
-@media screen and (max-width: 767px) {       
+@media screen and (max-width: 767px) {
+   .main {        
     aside.leftMenu {
         position: fixed;
         left: -240px;        
@@ -418,6 +424,9 @@ $menuWidth: 210px;
         background: #001529;
         z-index: 9999;
     }
+    .content-container {
+        left:0;
+    }    
     .open-drawer {        
         transform: translateX(240px);//界面向右滑动
     }    
@@ -431,7 +440,7 @@ $menuWidth: 210px;
         opacity: 0.3;
         z-index: 99;   
     }
-    .el-message-box {
+   .el-message-box {
         width: 260px;
     }
     .menu-btn {//监测界面为手机模式界面菜单栏按钮样式
@@ -456,6 +465,7 @@ $menuWidth: 210px;
     .el-menu--horizontal>.el-submenu .el-submenu__icon-arrow {            
         right:5px;
     }
+   }
   }
 
 </style>

@@ -4,8 +4,8 @@
             <div class="logo" >
                 <img  src="../assets/lgo.jpg" />
             </div>
-            <div @click="isCollapse=!isCollapse" style="text-align:center;" v-if="screen!='isMobile'">
-                <i  :class="isCollapse?'el-icon-arrow-left':'el-icon-arrow-right'" style="color:white;font-size:22px;"></i>
+            <div @click="isCollapse=!isCollapse" class="menu-btn" v-if="screen!='isMobile'">
+                <i class="menu-btn-icon" :class="isCollapse?'el-icon-arrow-left':'el-icon-arrow-right'" ></i>
             </div>
             <el-menu id="letNav" ref="letNav" :default-active="defaultActive" class="el-menu-vertical-demo"  unique-opened router @select="select" theme="dark" :collapse="isCollapse">
                 <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden ">
@@ -33,11 +33,11 @@
         </div>
         <div class="content-container" ref="container" :style="leftformat">
           <div class="navheard">
-            <span style="margin-left:20px;font-size:20px;">{{(screen!='isMobile')?"自主搭建vue":""}} Demo</span>
+            <span class="title">{{(screen!='isMobile')?"自主搭建vue":""}} Demo</span>
             <el-menu ref="headerNav" :default-active="defaultActive" id="headerNav" class="el-menu-header-wrap" mode="horizontal">
               <el-submenu index="/settings" >
                   <template slot="title">
-                        <span class="userinfo-inner"><span style="float: right;padding:0 20px 0 5px;" v-if="screen!='isMobile'">测试员</span> <img src="../assets/logo2.jpg" /></span>
+                        <span class="userinfo-inner"><span class="userinfo-name" v-if="screen!='isMobile'">测试员</span> <img src="../assets/logo2.jpg" /></span>
                   </template>
                   <el-menu-item @click.native="logout" style="color:rgba(0,0,0,0.75)" index="logout">退出登录</el-menu-item>
               </el-submenu>
@@ -219,6 +219,13 @@ $menuWidth: 210px;
                 margin: 0;
                 margin-top: 12px;
             }
+        }
+        .menu-btn {
+            text-align: center;
+            .menu-btn-icon {
+                color:white;
+                font-size: 22px;
+            }
         }        
         .el-menu {            
             border-right:none;
@@ -322,11 +329,18 @@ $menuWidth: 210px;
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 1px 4px 0 rgba(0,21,41,.08), inset 0 -1px 0 0 #e8e8e8;
-
         z-index: 11;
+        .title {
+           margin-left: 20px;
+           font-size: 20px;
+        }
         .userinfo-inner {
           color: rgba(0,0,0,0.85);
           cursor: pointer;
+          .userinfo-name {
+              float: right;
+              padding: 0 20px 0 5px;
+          }
           img {
               width: 40px;
               height: 40px;
@@ -397,17 +411,17 @@ $menuWidth: 210px;
 @media screen and (max-width: 767px) {       
     aside.leftMenu {
         position: fixed;
-        left: -240px;
-        //transform: translateX(0);
+        left: -240px;        
         transition: all 0.5s;
         width: 210px;
         min-height:100%;
         background: #001529;
+        z-index: 9999;
     }
-    .el-message-box {
-        width: 260px;
-    }
-    .menu-model {
+    .open-drawer {        
+        transform: translateX(240px);//界面向右滑动
+    }    
+    .menu-model {//织造层样式
         position: fixed;
         top: 0px;
         left: 0;
@@ -415,16 +429,10 @@ $menuWidth: 210px;
         bottom: 0;
         background: #000;
         opacity: 0.3;
-        z-index: 99;    
+        z-index: 99;   
     }
-    aside.open-drawer {
-        &.leftMenu {
-            position: fixed;
-            left: 0;
-            transform: translateX(0);
-            transition: all 0.5s;
-            z-index: 9999;
-        }
+    .el-message-box {
+        width: 260px;
     }
     .menu-btn {//监测界面为手机模式界面菜单栏按钮样式
         position: fixed;

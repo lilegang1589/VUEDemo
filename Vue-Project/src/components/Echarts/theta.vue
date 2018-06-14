@@ -1,6 +1,6 @@
 <template>
   <div class="__content" ref="container">
-      <div id="chartPanel" ref="chartPanel" style="width:50%;height:400px;margin-top:50px;"></div>
+      <div id="chartPanel" ref="chartPanel" class="chartPanel"></div>
   </div>
 </template>
 
@@ -99,5 +99,16 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
+.chartPanel {
+    width: 50%;
+    height: 400px;
+    margin-top: 50px;
+    left: 25%;
+}
+@media screen and (max-width: 767px) {
+    .chartPanel {       
+        left: 10%;
+    }   
+}
 </style>

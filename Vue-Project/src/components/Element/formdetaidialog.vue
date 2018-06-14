@@ -112,8 +112,8 @@ import util from '../../assets/js/util'
     }
     @media screen and (max-width: 767px) {
        .el-dialog{
-        width: 65%;
-    } 
+           width: 65%;
+       } 
     }
 }
 

@@ -92,6 +92,7 @@ export default {
         },
         tooltip: {
           trigger: "axis",
+          padding: [5, 10],
           formatter: function(params, ticket, callback) {
             let labels = [params[0].name],
               total = 0;

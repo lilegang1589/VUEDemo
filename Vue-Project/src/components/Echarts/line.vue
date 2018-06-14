@@ -1,7 +1,6 @@
 <template >
   <div class="__content" ref="container">
-    <div id="chartPanel" ref="chartPanel" style="width:100%;height:300px;margin-top:100px;"></div> 
-            
+    <div id="chartPanel" ref="chartPanel" style="height:300px;"></div>           
  </div>
 </template>
 
@@ -30,6 +29,9 @@ export default {
       ]
       }
     },
+    computed:{
+        
+    },
     watch: {
       'isCollapse': function(val, oldVal) {       
         setTimeout(() => {
@@ -38,7 +40,9 @@ export default {
 
       },
       isMobile(val,oldVal){
-          console.log((!!this.isMobile));
+         setTimeout(() => {
+            this.chartPanel.resize();
+        }, 600); 
       }
     },
     methods:{
@@ -69,8 +73,9 @@ export default {
       });
       if (this.chartPanel) {
         this.chartPanel.dispose();
-      }
+      }      
       this.chartPanel = echarts.init(this.$refs['chartPanel']);
+      
       
       this.option={
        title: {         
@@ -248,7 +253,8 @@ export default {
 
         ]
       };
-      this.chartPanel.setOption(this.option,true);
+      this.chartPanel.setOption(this.option);
+      this.chartPanel.resize();
     },
   },
   mounted(){

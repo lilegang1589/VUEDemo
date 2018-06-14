@@ -7,11 +7,28 @@
 <script>
 import echarts from "echarts"
 export default {
+    props:{
+      isMobile:"",
+      isCollapse:false     
+  },
   data(){
     return{
       chartPanel:null,
       data:[],
     }
+  },
+  watch: {
+      'isCollapse': function(val, oldVal) {       
+        setTimeout(() => {
+            this.chartPanel.resize();
+        }, 600);
+
+      },
+      isMobile(val,oldVal){
+         setTimeout(() => {
+            this.chartPanel.resize();
+        }, 600); 
+      }
   },
   methods:{
     getData(){

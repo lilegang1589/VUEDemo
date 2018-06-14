@@ -1,6 +1,6 @@
 <template>
       <div class="main" >
-        <aside class="leftMenu" ref="menu" :class="!opendrg?'open-drawer':''" :style="widthformat"  >
+        <aside class="leftMenu" ref="menu" :class="opendrg?'':'open-drawer'" :style="widthformat"  >
             <div class="logo" >
                 <img  src="../assets/lgo.jpg" />
             </div>
@@ -235,7 +235,8 @@ $menuWidth: 210px;
                     &:hover {
                         background-color: #121c2f;
                         opacity: 1;
-                    }                             
+                    }
+                                            
                 }
                 .el-menu-item {
                     height: 40px;
@@ -260,7 +261,18 @@ $menuWidth: 210px;
                             opacity: 1;
                         }
                     }                    
-                }            
+                }
+                &.is-active{
+                  .el-submenu__title{
+                        opacity: 1;
+                        .icon{
+                            opacity: 1;
+                        }
+                        span{
+                            opacity: 1;
+                        }
+                    }
+                }                
             }
         }
         .el-menu-vertical-demo {
@@ -285,7 +297,9 @@ $menuWidth: 210px;
                     i.iconfont {                        
                         font-size: 16px;
                     }
+                     
                 }
+                
             }    
         }        
     }
@@ -306,6 +320,9 @@ $menuWidth: 210px;
         position: relative;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 1px 4px 0 rgba(0,21,41,.08), inset 0 -1px 0 0 #e8e8e8;
+
         z-index: 11;
         .userinfo-inner {
           color: rgba(0,0,0,0.85);
@@ -404,7 +421,7 @@ $menuWidth: 210px;
         &.leftMenu {
             position: fixed;
             left: 0;
-            //transform: translateX(0);
+            transform: translateX(0);
             transition: all 0.5s;
             z-index: 9999;
         }

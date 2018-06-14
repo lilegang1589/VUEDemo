@@ -98,7 +98,8 @@ export default {
         },
       dialog:{
         visible:false,
-        form:{}
+        form:{},
+        screen:""
       },
       rules: {
         name: [
@@ -132,6 +133,7 @@ export default {
           if (valid) {
             this.dialog.visible=true;
             this.dialog.form=this.ruleForm;
+            this.dialog.screen=this.isMobile;
           } else {
             console.log('error submit!!');
             return false;
@@ -153,6 +155,9 @@ export default {
        widthformat(){
         if(this.isMobile==='isDesktop'){
            return 'width:50%';
+        }
+        else if(this.isMobile==='isTablet'){
+            return 'width:70%';
         }else{
            return 'width:100%';
         }

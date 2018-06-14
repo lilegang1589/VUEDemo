@@ -1,9 +1,9 @@
 <template lang="html">
   <el-dialog
     title="表单详情"
-    :visible.sync="opts.visible"
-    width="30%"
+    :visible.sync="opts.visible"   
     @open="openDialog"
+    id="formdialog"
     custom-class="formdialog"
     :before-close="handleClose">
     <div class="">
@@ -65,15 +65,20 @@ import util from '../../assets/js/util'
         form:{},
         type:'',
         date1:'',
-        date2:''
+        date2:'',
+        width:'30%'
 
       };
+    },
+    wtach:{
+    
     },
     methods: {
       openDialog(){
         this.date1=util.dateUtils.format(this.opts.form.date2,util.dateUtils.DEFAULT_PATTERN);
         this.date2=util.dateUtils.formatLong(this.opts.form.date2,util.dateUtils.DEFAULT_TIME_PATTERN);
         this.type=this.opts.form.type.join(",");
+        console.log(this.opts.screen);
       },
       handleClose() {
         this.opts.visible=false;
@@ -99,5 +104,17 @@ import util from '../../assets/js/util'
   .el-dialog__header{
     border-bottom: 1px solid #e8e8e8;
   }
+  
 }
+#formdialog{
+    .el-dialog{
+        width: 30%;
+    }
+    @media screen and (max-width: 767px) {
+       .el-dialog{
+        width: 65%;
+    } 
+    }
+}
+
 </style>

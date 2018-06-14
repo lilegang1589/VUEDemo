@@ -17,3 +17,4 @@ npm build
 3.通过vuex实现用户长时间不操作，将自动退出系统
 4.引入enquire.js实现响应式页面布局
 5.实现响应式echarts布局
+[图片]

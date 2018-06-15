@@ -1,5 +1,9 @@
 <template >
   <div class="__content" ref="container">
+    <div class="description">
+            具体功能请查看
+       <a href="http://echarts.baidu.com/option.html#title" style="text-decoration:underline;color:blue;" target="_blank">echarts配置文档</a>
+    </div>
     <div id="chartPanel" ref="chartPanel" style="height:300px;"></div>           
  </div>
 </template>

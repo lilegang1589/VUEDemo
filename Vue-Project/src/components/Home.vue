@@ -414,6 +414,9 @@ $menuWidth: 210px;
 
 
 @media screen and (max-width: 767px) {
+    .el-message-box {
+        width: 260px;
+    }
    .main {        
     aside.leftMenu {
         position: fixed;
@@ -440,9 +443,7 @@ $menuWidth: 210px;
         opacity: 0.3;
         z-index: 99;   
     }
-   .el-message-box {
-        width: 260px;
-    }
+   
     .menu-btn {//监测界面为手机模式界面菜单栏按钮样式
         position: fixed;
         left: 0;

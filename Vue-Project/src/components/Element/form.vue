@@ -10,14 +10,14 @@
           <el-option label="上海张江" value="上海张江"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="活动时间" required>
-        <el-col :span="11">
+      <el-form-item label="活动时间" required id="formitem">
+        <el-col :xs="24" :sm="11" :md="11">
           <el-form-item prop="date1">
             <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;" :picker-options="pickerOptions1"></el-date-picker>
           </el-form-item>
         </el-col>
-        <el-col class="line"  style="text-align:center;" :span="2">-</el-col>
-        <el-col :span="11">
+        <el-col class="line"  style="text-align:center;" :xs="0" :sm="2" :md="2">-</el-col>
+        <el-col :xs="24" :sm="11" :md="11">
           <el-form-item prop="date2">
             <el-time-picker type="fixed-time" placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
           </el-form-item>
@@ -170,16 +170,38 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-#checkboxclass{
-  .el-checkbox-group{
+<style lang="scss" >
+#checkboxclass {
+  .el-checkbox-group {
     width: 100%;
   }
-  .el-checkbox{
+  .el-checkbox {
     width: 50%;
   }
-  .el-checkbox+.el-checkbox{
+  .el-checkbox+.el-checkbox {
     margin-left: 0;
   }
+  @media screen and (max-width: 767px) {
+     .el-checkbox-group {
+        width: 100%;
+     }
+    .el-checkbox { 
+        width: 100%;
+    }
+    .el-checkbox+.el-checkbox { 
+        margin-left: 0;
+    }    
+   
+  }
 }
+ 
+      @media screen and (max-width: 767px) {         
+        #formitem {     
+         .el-form-item__content{
+             margin-bottom: 16px;
+             width: 80%;
+             
+         }
+       }
+ } 
 </style>

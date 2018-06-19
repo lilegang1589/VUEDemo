@@ -8,6 +8,7 @@ import line from '@/components/Echarts/line'
 import theta from '@/components/Echarts/theta'
 import time from '@/components/Echarts/time'
 import Login from '@/components/Login/login'
+import map from '@/components/baidumap/map'
 Vue.use(Router)
 
 export default new Router({
@@ -48,6 +49,18 @@ export default new Router({
             
         ]
     },
+    {
+        path: '/',
+        name: '百度地图组件',
+        component: Home,
+        iconCls: 'icon-database',//iconfont 使用
+        //leaf: true,//只有一个节点
+          children: [
+              { path: '/map', component: map, name: '地图' }
+            
+              
+          ]
+      },
     {
             path: '/login',
             component: Login,

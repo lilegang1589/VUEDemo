@@ -195,13 +195,13 @@ export default {
   }
 }
  
-      @media screen and (max-width: 767px) {         
-        #formitem {     
-         .el-form-item__content{
-             margin-bottom: 16px;
-             width: 80%;
-             
-         }
-       }
- } 
+@media screen and (max-width: 767px) {         
+    #formitem {     
+        .el-form-item__content{
+            margin-bottom: 16px;
+            width: 80%;
+            
+        }
+    }
+} 
 </style>

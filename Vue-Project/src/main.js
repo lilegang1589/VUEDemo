@@ -13,7 +13,7 @@ import Vuex from 'vuex'
 import enquire  from 'enquire.js'
 import store from './vuex/store'
 
-Vue.use(ElementUI)
+ Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.config.productionTip = false
 const outerPaths = ["/login"];

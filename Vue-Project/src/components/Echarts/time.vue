@@ -1,11 +1,10 @@
 <template>
   <div class="__content" style="background:#001529">
-    <div id="chartPanel" ref="chartPanel" style="width:100%;height:400px;margin-top:50px;"></div>
+    <!-- <div id="chartPanel" ref="chartPanel" style="width:100%;height:400px;margin-top:50px;"></div> -->
   </div>
 </template>
 
 <script>
-import echarts from "echarts"
 export default {
  data() {
   return {

@@ -1,6 +1,5 @@
 <template>
-<div class=" console" ref="container">
-  
+<div class=" console" ref="container">  
      <el-row  :gutter="10" style="margin:20px 10px 0;">
             <el-col :xs="24" :sm="12" :md="6"  >
               <div  class="item" style="background:rgb(49, 180, 141);">
@@ -55,6 +54,7 @@
 </template>
 
 <script>
+
 export default {
   data(){
     return{

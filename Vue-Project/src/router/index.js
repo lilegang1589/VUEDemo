@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import console from '@/components/console/console'
-import form from '@/components/Element/form'
-import table from '@/components/Element/table'
-import line from '@/components/Echarts/line'
-import theta from '@/components/Echarts/theta'
-import time from '@/components/Echarts/time'
-import Login from '@/components/Login/login'
-import map from '@/components/baidumap/map'
+const Home = () => import('@/components/Home')
+const console = () => import('@/components/console/console')  
+const form = () => import('@/components/Element/form')  
+const table = () => import('@/components/Element/table')  
+const line = () => import('@/components/Echarts/line')  
+const theta = () => import('@/components/Echarts/theta')  
+const time = () => import('@/components/Echarts/time')  
+const Login = () => import('@/components/Login/login')  
+const map = () => import('@/components/baidumap/map')  
+
 Vue.use(Router)
 
 export default new Router({

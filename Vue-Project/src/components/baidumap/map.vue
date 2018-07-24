@@ -1,5 +1,5 @@
 <template>
- <div class="__content" style="backgroud:white;height:100%;" ref="container">
+ <div class="__content" style="backgroud:white;height:100%;" ref="container">   
      <div>杭州市</div>
      <div class="map" id="map" style="margin:0 0 20px 0">{{formatMap(120.15, 30.28, "map")}}</div>
      <div>合肥市</div>
@@ -12,7 +12,7 @@ import MapUtil from '../../assets/js/MapUtil'
 export default {
  data() {
   return {
-
+      
   }
  },
  components: {
@@ -35,7 +35,7 @@ export default {
             
         });
         return "";
-    },
+    },    
     setHeight() {
         let h = document.documentElement.clientHeight || document.body.offsetHeight;
         this.$refs.container.style.minHeight = h - 60 - 80-40 +'px';
@@ -43,7 +43,9 @@ export default {
  },
  mounted(){
      this.setHeight();
- }
+      
+ },
+     
 }
 </script>
 

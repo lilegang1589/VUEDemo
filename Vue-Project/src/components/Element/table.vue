@@ -2,8 +2,10 @@
   <div class="__content" ref="container">
     <div class="description">
       具体功能请查看
-      <a href="http://element.eleme.io/#/zh-CN/component/installation" style="text-decoration:underline;color:blue;" target="_blank">ElementUI官网</a>
+      <a href="http://element.eleme.io/#/zh-CN/component/installation"
+       style="text-decoration:underline;color:blue;" target="_blank">ElementUI官网</a>
     </div>
+  <div>现在时间是{{date}}</div>
     <el-table
     :data="tableData"
     style="width: 100%">
@@ -39,7 +41,7 @@
     </el-table-column>
     <el-table-column
       label="操作"
-      width="100">
+      >
       <template slot-scope="scope">
         <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
         <el-button type="text" size="small">编辑</el-button>
@@ -51,17 +53,22 @@
 </template>
 
 <script>
+
 import detail from './tabledetail'
+
 export default {
   components:{
     detail
   },
-  data() {
+  data() {      
       return {
         dialog:{
           visible:false,
           form:{}
         },
+        
+        date:new Date().toLocaleTimeString(),
+        timer:1000,
         tableData: [{
           date: '2016-05-03',
           name: '王小虎',
@@ -105,7 +112,16 @@ export default {
     },
     mounted(){
       this.setHeight();
+      var that = this; //声明一个变量指向vue实例this,保证作用域一致
+        this.timer = setInterval(function() {
+            that.date = new Date().toLocaleTimeString();//修改数据date
+        }, 1000);
+    },
+    beforeDestroy () {
+    if(this.timer) {
+        clearInterval(this.timer);//在vue实例销毁钱，清除我们的定时器
     }
+ }   
 }
 </script>
 

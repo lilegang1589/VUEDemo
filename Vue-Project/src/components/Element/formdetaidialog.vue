@@ -1,5 +1,5 @@
 <template lang="html">
-  <el-dialog
+  <!-- <el-dialog
     title="表单详情"
     :visible.sync="opts.visible"   
     @open="openDialog"
@@ -54,7 +54,7 @@
       <el-button @click="opts.visible = false">取 消</el-button>
       <el-button type="primary" @click="submitForm">确 定</el-button>
     </span>
-  </el-dialog>
+  </el-dialog> -->
 </template>
 <script>
 import util from '../../assets/js/util'

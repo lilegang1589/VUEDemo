@@ -18,3 +18,7 @@ npm build
 4.引入enquire.js实现响应式页面布局
 5.实现响应式echarts布局
 6.增加百度地图api的使用
+在wabpack层面进行部分优化 
+使用路由的懒加载
+使用cdn引入外部库，如echarts，百度api
+使用按需加载的方式引入elementui
